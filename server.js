@@ -4,20 +4,20 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Serve static files from the "public" folder
+// Serve static files in "public"
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Default route - serve index.html
+// Default route
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-// Example API route
+// Example API endpoint
 app.get('/api/ping', (req, res) => {
-  res.json({ pong: true, time: new Date().toISOString() });
+  res.json({ message: 'Pong!', time: new Date().toISOString() });
 });
 
-// Start the server
+// Start server
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+  console.log(`✅ Server running on port ${PORT}`);
 });
